@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>ProcuraX | SAP Procurement</title>
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="style.css">
+
+</head>
+
+
+<body>
+
+<div class="app">
+
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <div class="brand-icon">
+                PX
+            </div>
+
+            <div>
+
+                <h2>ProcuraX</h2>
+
+                <span>Procurement OS</span>
+
+            </div>
+
+        </div>
+
+
+        <div class="menu-title">
+            MAIN MENU
+        </div>
+
+
+        <nav>
+
+            <button class="nav-item active"
+                    onclick="showSection('dashboard', this)">
+
+                <span class="nav-icon">⌂</span>
+
+                Dashboard
+
+            </button>
+
+
+            <button class="nav-item"
+                    onclick="showSection('vendors', this)">
+
+                <span class="nav-icon">◉</span>
+
+                Vendors
+
+            </button>
+
+
+            <button class="nav-item"
+                    onclick="showSection('materials', this)">
+
+                <span class="nav-icon">▦</span>
+
+                Materials
+
+            </button>
+
+
+            <button class="nav-item"
+                    onclick="showSection('orders', this)">
+
+                <span class="nav-icon">▤</span>
+
+                Purchase Orders
+
+            </button>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <div class="sap-badge">
+
+                <span></span>
+
+                SAP S/4HANA Inspired
+
+            </div>
+
+            <p>Procurement Management</p>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main">
+
+
+        <!-- TOP BAR -->
+
+        <header class="topbar">
+
+            <div>
+
+                <div class="breadcrumb">
+                    Procurement / <span id="pageName">Dashboard</span>
+                </div>
+
+                <h1 id="pageTitle">
+                    Good afternoon 👋
+                </h1>
+
+            </div>
+
+
+            <div class="top-actions">
+
+                <div class="api-status">
+
+                    <span class="pulse"></span>
+
+                    API Online
+
+                </div>
+
+
+                <div class="avatar">
+                    DX
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- ================= DASHBOARD ================= -->
+
+        <section id="dashboard"
+                 class="section">
+
+
+            <div class="hero">
+
+                <div>
+
+                    <span class="hero-label">
+                        PROCUREMENT OVERVIEW
+                    </span>
+
+                    <h2>
+                        Manage your purchasing,
+                        <br>
+                        <strong>smarter.</strong>
+                    </h2>
+
+                    <p>
+                        Track vendors, materials and
+                        purchase orders from one place.
+                    </p>
+
+                </div>
+
+
+                <div class="hero-shape">
+
+                    <div class="shape-card">
+                        📦
+                    </div>
+
+                    <div class="shape-card second">
+                        💳
+                    </div>
+
+                    <div class="shape-card third">
+                        🚚
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- KPI CARDS -->
+
+            <div class="stats-grid">
+
+
+                <div class="stat-card purple">
+
+                    <div class="stat-top">
+
+                        <span class="stat-icon">
+                            ◉
+                        </span>
+
+                        <span class="trend">
+                            +12%
+                        </span>
+
+                    </div>
+
+                    <p>Total Vendors</p>
+
+                    <h3 id="totalVendors">
+                        0
+                    </h3>
+
+                    <div class="progress">
+                        <span></span>
+                    </div>
+
+                </div>
+
+
+
+                <div class="stat-card blue">
+
+                    <div class="stat-top">
+
+                        <span class="stat-icon">
+                            ▦
+                        </span>
+
+                        <span class="trend">
+                            +8%
+                        </span>
+
+                    </div>
+
+                    <p>Total Materials</p>
+
+                    <h3 id="totalMaterials">
+                        0
+                    </h3>
+
+                    <div class="progress">
+                        <span></span>
+                    </div>
+
+                </div>
+
+
+
+                <div class="stat-card orange">
+
+                    <div class="stat-top">
+
+                        <span class="stat-icon">
+                            ▤
+                        </span>
+
+                        <span class="trend">
+                            +18%
+                        </span>
+
+                    </div>
+
+                    <p>Purchase Orders</p>
+
+                    <h3 id="totalOrders">
+                        0
+                    </h3>
+
+                    <div class="progress">
+                        <span></span>
+                    </div>
+
+                </div>
+
+
+
+                <div class="stat-card green">
+
+                    <div class="stat-top">
+
+                        <span class="stat-icon">
+                            ✓
+                        </span>
+
+                        <span class="trend">
+                            Active
+                        </span>
+
+                    </div>
+
+                    <p>Delivered Orders</p>
+
+                    <h3 id="deliveredOrders">
+                        0
+                    </h3>
+
+                    <div class="progress">
+                        <span></span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- LOWER CARDS -->
+
+            <div class="dashboard-grid">
+
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <h3>
+                                Procurement Summary
+                            </h3>
+
+                            <p>
+                                Current order performance
+                            </p>
+
+                        </div>
+
+                        <span class="live">
+                            ● LIVE
+                        </span>
+
+                    </div>
+
+
+                    <div class="summary-list">
+
+
+                        <div class="summary-item">
+
+                            <div class="summary-icon pending">
+                                ⏳
+                            </div>
+
+                            <div class="summary-info">
+
+                                <span>
+                                    Pending Orders
+                                </span>
+
+                                <strong id="pendingOrders">
+                                    0
+                                </strong>
+
+                            </div>
+
+                            <div class="mini-bar">
+                                <span id="pendingBar"></span>
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="summary-item">
+
+                            <div class="summary-icon approved">
+                                ✓
+                            </div>
+
+                            <div class="summary-info">
+
+                                <span>
+                                    Approved Orders
+                                </span>
+
+                                <strong id="approvedOrders">
+                                    0
+                                </strong>
+
+                            </div>
+
+                            <div class="mini-bar">
+                                <span id="approvedBar"></span>
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="summary-item">
+
+                            <div class="summary-icon delivered">
+                                🚚
+                            </div>
+
+                            <div class="summary-info">
+
+                                <span>
+                                    Delivered Orders
+                                </span>
+
+                                <strong id="deliveredOrders2">
+                                    0
+                                </strong>
+
+                            </div>
+
+                            <div class="mini-bar">
+                                <span id="deliveredBar"></span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="panel value-panel">
+
+                    <div class="value-orb">
+
+                        ₹
+
+                    </div>
+
+                    <p>
+                        Total Purchase Value
+                    </p>
+
+                    <h2 id="purchaseValue">
+                        ₹0
+                    </h2>
+
+                    <span class="value-note">
+                        Across all purchase orders
+                    </span>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ================= VENDORS ================= -->
+
+        <section id="vendors"
+                 class="section hidden">
+
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="eyebrow">
+                        MASTER DATA
+                    </span>
+
+                    <h2>
+                        Vendor Management
+                    </h2>
+
+                    <p>
+                        Manage your procurement partners.
+                    </p>
+
+                </div>
+
+
+                <button class="primary-btn"
+                        onclick="openModal('vendorModal')">
+
+                    + Add Vendor
+
+                </button>
+
+            </div>
+
+
+            <div class="toolbar">
+
+                <div class="search">
+
+                    🔍
+
+                    <input type="text"
+                           id="vendorSearch"
+                           placeholder="Search vendors..."
+                           oninput="filterVendors()">
+
+                </div>
+
+            </div>
+
+
+            <div class="table-panel">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>ID</th>
+
+                            <th>Vendor</th>
+
+                            <th>Email</th>
+
+                            <th>Phone</th>
+
+                            <th>Location</th>
+
+                            <th>Action</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="vendorTable">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= MATERIALS ================= -->
+
+        <section id="materials"
+                 class="section hidden">
+
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="eyebrow">
+                        MATERIAL MASTER
+                    </span>
+
+                    <h2>
+                        Material Management
+                    </h2>
+
+                    <p>
+                        Track products, prices and inventory.
+                    </p>
+
+                </div>
+
+
+                <button class="primary-btn"
+                        onclick="openModal('materialModal')">
+
+                    + Add Material
+
+                </button>
+
+            </div>
+
+
+            <div class="material-grid"
+                 id="materialCards">
+
+            </div>
+
+
+            <div class="table-panel">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>ID</th>
+
+                            <th>Material</th>
+
+                            <th>Category</th>
+
+                            <th>Price</th>
+
+                            <th>Stock</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="materialTable">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= PURCHASE ORDERS ================= -->
+
+        <section id="orders"
+                 class="section hidden">
+
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="eyebrow">
+                        PROCUREMENT
+                    </span>
+
+                    <h2>
+                        Purchase Orders
+                    </h2>
+
+                    <p>
+                        Create, approve and track purchase orders.
+                    </p>
+
+                </div>
+
+
+                <button class="primary-btn"
+                        onclick="openModal('orderModal')">
+
+                    + Create Purchase Order
+
+                </button>
+
+            </div>
+
+
+            <div class="order-summary">
+
+
+                <div>
+                    <span>All Orders</span>
+                    <strong id="orderCount">0</strong>
+                </div>
+
+
+                <div>
+                    <span>Pending</span>
+                    <strong id="orderPending">0</strong>
+                </div>
+
+
+                <div>
+                    <span>Approved</span>
+                    <strong id="orderApproved">0</strong>
+                </div>
+
+
+                <div>
+                    <span>Delivered</span>
+                    <strong id="orderDelivered">0</strong>
+                </div>
+
+
+            </div>
+
+
+            <div class="table-panel">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>PO</th>
+
+                            <th>Vendor</th>
+
+                            <th>Date</th>
+
+                            <th>Total</th>
+
+                            <th>Status</th>
+
+                            <th>Delivery</th>
+
+                            <th>Actions</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="orderTable">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+</div>
+
+
+
+<!-- ================= VENDOR MODAL ================= -->
+
+<div class="modal"
+     id="vendorModal">
+
+    <div class="modal-box">
+
+        <button class="close"
+                onclick="closeModal('vendorModal')">
+            ×
+        </button>
+
+        <div class="modal-title">
+
+            <span class="modal-icon purple-bg">
+                ◉
+            </span>
+
+            <div>
+
+                <h2>Add Vendor</h2>
+
+                <p>Create a new procurement partner.</p>
+
+            </div>
+
+        </div>
+
+
+        <form id="vendorForm">
+
+            <label>Vendor Name</label>
+
+            <input type="text"
+                   id="vendorName"
+                   placeholder="ABC Technologies"
+                   required>
+
+
+            <label>Email</label>
+
+            <input type="email"
+                   id="vendorEmail"
+                   placeholder="vendor@example.com">
+
+
+            <label>Phone</label>
+
+            <input type="text"
+                   id="vendorPhone"
+                   placeholder="9876543210">
+
+
+            <label>Address</label>
+
+            <input type="text"
+                   id="vendorAddress"
+                   placeholder="Chennai">
+
+
+            <button class="primary-btn full"
+                    type="submit">
+
+                Create Vendor
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
+<!-- ================= MATERIAL MODAL ================= -->
+
+<div class="modal"
+     id="materialModal">
+
+    <div class="modal-box">
+
+        <button class="close"
+                onclick="closeModal('materialModal')">
+            ×
+        </button>
+
+        <div class="modal-title">
+
+            <span class="modal-icon blue-bg">
+                ▦
+            </span>
+
+            <div>
+
+                <h2>Add Material</h2>
+
+                <p>Add a new material to inventory.</p>
+
+            </div>
+
+        </div>
+
+
+        <form id="materialForm">
+
+            <label>Material Name</label>
+
+            <input type="text"
+                   id="materialName"
+                   placeholder="Laptop"
+                   required>
+
+
+            <label>Category</label>
+
+            <input type="text"
+                   id="materialCategory"
+                   placeholder="Electronics">
+
+
+            <label>Price</label>
+
+            <input type="number"
+                   id="materialPrice"
+                   placeholder="55000"
+                   required>
+
+
+            <label>Stock Quantity</label>
+
+            <input type="number"
+                   id="materialStock"
+                   placeholder="25"
+                   required>
+
+
+            <button class="primary-btn full"
+                    type="submit">
+
+                Add Material
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
+<!-- ================= ORDER MODAL ================= -->
+
+<div class="modal"
+     id="orderModal">
+
+    <div class="modal-box">
+
+        <button class="close"
+                onclick="closeModal('orderModal')">
+            ×
+        </button>
+
+        <div class="modal-title">
+
+            <span class="modal-icon orange-bg">
+                ▤
+            </span>
+
+            <div>
+
+                <h2>Create Purchase Order</h2>
+
+                <p>Generate a new procurement order.</p>
+
+            </div>
+
+        </div>
+
+
+        <form id="orderForm">
+
+            <label>Select Vendor</label>
+
+            <select id="orderVendor"
+                    required>
+
+                <option value="">
+                    Select vendor
+                </option>
+
+            </select>
+
+
+            <label>Select Material</label>
+
+            <select id="orderMaterial"
+                    required>
+
+                <option value="">
+                    Select material
+                </option>
+
+            </select>
+
+
+            <label>Quantity</label>
+
+            <input type="number"
+                   id="orderQuantity"
+                   min="1"
+                   placeholder="5"
+                   required>
+
+
+            <div class="order-preview">
+
+                <span>Order Status</span>
+
+                <strong>
+                    PENDING APPROVAL
+                </strong>
+
+            </div>
+
+
+            <button class="primary-btn full"
+                    type="submit">
+
+                Create Purchase Order
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
+<script src="app.js"></script>
+
+</body>
+
+</html>
